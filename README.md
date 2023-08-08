@@ -26,7 +26,9 @@ ln -s ~/.dotfiles/.gitconfig-jjm ~/.gitconfig-jjm
 ln -s ~/.dotfiles/.gitconfig-personal ~/.gitconfig-personal
 ln -s ~/.dotfiles/.p10k.zsh ~/.p10k.zsh
 ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
-ln -s ~/.dotfiles/.zshrc ~/.zshrc
+ln -s ~/.dotfiles/.nvim ~/.nvim
+ln -s ~/.dotfiles/.skhd ~/.skhd
+ln -s ~/.dotfiles/.yabai ~/.yabai
 ```
 
 4. Install Homebrew, followed by the software listed in the Brewfile.
