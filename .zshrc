@@ -9,7 +9,6 @@ fi
 
 export ZSH="/Users/szymonkin/.oh-my-zsh"
 
-# ZSH_THEME="robbyrussell"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
@@ -21,49 +20,14 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 alias vim="nvim"
-
 alias jjm="cd /Users/szymonkin/dev/jjm/vinted-frontend/"
 alias devscard="personal_cfg && cd /Users/szymonkin/dev/coders-crew/devscard/"
 alias webwolf="personal_cfg && cd /Users/szymonkin/dev/webwolf/cam-recorder-frontend"
 alias webwolf_backend_start="personal_cfg && cd /Users/szymonkin/dev/webwolf/cam-recorder-backend && ./vendor/bin/sail up"
 
-function pgres() {
-  if [ $# -eq 0 ]; then
-    echo "Provide one argument of type: start | stop"
-    return
-  fi
-
-  pg_ctl -D '/usr/local/var/postgres@11' -l logfile $1
-}
-
 function copy_branch_name() {
   git rev-parse --abbrev-ref HEAD |  tr -d '\n' | pbcopy
 }
-
-alias personal_cfg="git config --global user.email 'szymon.kin@gmail.com' && git config --global user.name 'hoolek77'"
-alias jjm_cfg="git config --global user.email 'szymon.kin@jjmdevelopment.pl' && git config --global user.name 'Szymon Kin'"
-
-function detect_git_config() {
-  JJM_KEYWORD="jjm"
-
-  if [[ "$@" == *"$JJM_KEYWORD"* ]]
-  then
-    jjm_cfg
-  else
-    personal_cfg
-  fi
-}
-
-# function cd () {
-#   DEV_KEYWORD="dev"
-#
-#   if [[ "$@" == *"$DEV_KEYWORD"* ]]
-#   then
-#     builtin cd "$@" && detect_git_config "$@";
-#   else
-#     builtin cd "$@"
-#   fi
-# }
 
 function ls () {
   if [ -n "$1" ]
