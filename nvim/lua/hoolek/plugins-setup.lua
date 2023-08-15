@@ -1,147 +1,129 @@
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-    vim.cmd([[packadd packer.nvim]])
-    return true
-  end
-  return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
-local packer_bootstrap = ensure_packer() -- true if packer was just installed
+vim.opt.rtp:prepend(lazypath)
 
--- autocommand that reloads neovim and installs/updates/removes plugins
--- when file is saved
-vim.cmd([[
-  augroup packer_user_config
-  autocmd!
-  autocmd BufWritePost plugins-setup.lua source <afile> | PackerSync
-  augroup end
-]])
+require("lazy").setup({
+  "wbthomason/packer.nvim",
 
-local status, packer = pcall(require, "packer")
-if not status then
-  return
-end
-
-return packer.startup(function(use)
-  use("wbthomason/packer.nvim")
-
-  -- lua functions that many plugins use
-  use("nvim-lua/plenary.nvim")
-
-  use("navarasu/onedark.nvim")
-  use({ "catppuccin/nvim", as = "catppuccin" })
+  "navarasu/onedark.nvim",
+  { "catppuccin/nvim", name = "catppuccin" },
 
   -- tmux & split window navigation
-  use("christoomey/vim-tmux-navigator")
+  "christoomey/vim-tmux-navigator",
 
-  use("szw/vim-maximizer") -- maximizes and restores current window
+  "szw/vim-maximizer", -- maximizes and restores current window
 
-  use("nvim-pack/nvim-spectre")
+  "nvim-pack/nvim-spectre",
 
   -- essential plugins
-  use("tpope/vim-surround")
-  use("vim-scripts/ReplaceWithRegister")
+  "tpope/vim-surround",
+  "vim-scripts/ReplaceWithRegister",
 
   -- commenting with gc
-  use("numToStr/Comment.nvim")
-  use("JoosepAlviste/nvim-ts-context-commentstring")
+  "numToStr/Comment.nvim",
+  "JoosepAlviste/nvim-ts-context-commentstring",
 
   -- file explorer
-  use("nvim-tree/nvim-tree.lua")
+  "nvim-tree/nvim-tree.lua",
 
   -- icons
-  use("nvim-tree/nvim-web-devicons")
+  "nvim-tree/nvim-web-devicons",
 
   -- statusline
-  use("nvim-lualine/lualine.nvim")
+  "nvim-lualine/lualine.nvim",
+
+  "nvim-lua/plenary.nvim",
 
   -- fuzzy finding w/ telescope
-  use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
-  use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
-  use("nvim-telescope/telescope-file-browser.nvim")
+  "nvim-telescope/telescope-file-browser.nvim",
+  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+  { "nvim-telescope/telescope.nvim", tag = "0.1.2", dependencies = {} }, -- fuzzy finder
 
   -- autocompletion
-  use("hrsh7th/nvim-cmp") -- completion plugin
-  use("hrsh7th/cmp-buffer") -- source for text in buffer
-  use("hrsh7th/cmp-path") -- source for file system paths
+  "hrsh7th/nvim-cmp", -- completion plugin
+  "hrsh7th/cmp-buffer", -- source for text in buffer
+  "hrsh7th/cmp-path", -- source for file system paths
 
   -- snippets
-  use("L3MON4D3/LuaSnip") -- snippet engine
-  use("saadparwaiz1/cmp_luasnip") -- for autocompletion
-  use("rafamadriz/friendly-snippets") -- useful snippets
+  "L3MON4D3/LuaSnip", -- snippet engine
+  "saadparwaiz1/cmp_luasnip", -- for autocompletion
+  "rafamadriz/friendly-snippets", -- useful snippets
 
   -- managing & installing lsp servers, linters & formatters
-  use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
-  use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
+  "williamboman/mason.nvim", -- in charge of managing lsp servers, linters & formatters
+  "williamboman/mason-lspconfig.nvim", -- bridges gap b/w mason & lspconfig
 
   -- configuring lsp servers
-  use("neovim/nvim-lspconfig") -- easily configure language servers
-  use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
-  use({
+  "neovim/nvim-lspconfig", -- easily configure language servers
+  "hrsh7th/cmp-nvim-lsp", -- for autocompletion
+  {
     "glepnir/lspsaga.nvim",
     branch = "main",
-    requires = {
-      { "nvim-tree/nvim-web-devicons" },
-      { "nvim-treesitter/nvim-treesitter" },
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      -- "nvim-treesitter/nvim-treesitter",
     },
-  }) -- enhanced lsp uis
-  use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
-  use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
+  }, -- enhanced lsp uis
+  "jose-elias-alvarez/typescript.nvim", -- additional functionality for typescript server (e.g. rename file & update imports)
+  "onsails/lspkind.nvim", -- vs-code like icons for autocompletion
 
   -- formatting & linting
-  use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
-  use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+  "jose-elias-alvarez/null-ls.nvim", -- configure formatters & linters
+  "jayp0521/mason-null-ls.nvim", -- bridges gap b/w mason & null-ls
 
   -- treesitter configuration
-  use({
+  {
     "nvim-treesitter/nvim-treesitter",
-    run = function()
+    build = function()
       local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
       ts_update()
     end,
-  })
-  use("nvim-treesitter/nvim-treesitter-context")
+  },
+  "nvim-treesitter/nvim-treesitter-context",
 
   -- auto closing
-  use("m4xshen/autoclose.nvim")
-  -- use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
-  use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
+  "m4xshen/autoclose.nvim",
+  -- "windwp/nvim-autopairs", -- autoclose parens, brackets, quotes, etc...
+  { "windwp/nvim-ts-autotag", dependencies = { "nvim-treesitter" } }, -- autoclose tags
 
   -- git integration
-  use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
+  "lewis6991/gitsigns.nvim", -- show line modifications on left hand side
 
   -- wakatime
-  use("wakatime/vim-wakatime")
+  "wakatime/vim-wakatime",
 
   -- git blame
-  use("f-person/git-blame.nvim")
+  "f-person/git-blame.nvim",
 
   -- trailing whitespaces
-  -- use("lukoshkin/trailing-whitespace")
+  -- "lukoshkin/trailing-whitespace",
 
   -- colorizer
-  use("norcalli/nvim-colorizer.lua")
+  "norcalli/nvim-colorizer.lua",
 
   -- command suggestions
-  use("gelguy/wilder.nvim")
+  "gelguy/wilder.nvim",
 
-  use("github/copilot.vim")
+  "github/copilot.vim",
 
-  use("folke/trouble.nvim")
+  "folke/trouble.nvim",
 
   -- git integration
-  use("tpope/vim-fugitive")
+  "tpope/vim-fugitive",
 
   -- harpoon
-  use("theprimeagen/harpoon")
+  "theprimeagen/harpoon",
 
   -- golang
-  use("ray-x/go.nvim")
-  use("ray-x/guihua.lua") -- recommended if need floating window support
-
-  if packer_bootstrap then
-    require("packer").sync()
-  end
-end)
+  "ray-x/go.nvim",
+  "ray-x/guihua.lua", -- recommended if need floating window support
+})
