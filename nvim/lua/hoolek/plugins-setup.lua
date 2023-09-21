@@ -14,7 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   "wbthomason/packer.nvim",
 
-  "navarasu/onedark.nvim",
   { "catppuccin/nvim", name = "catppuccin" },
 
   -- tmux & split window navigation
@@ -93,7 +92,36 @@ require("lazy").setup({
   -- auto closing
   "m4xshen/autoclose.nvim",
   -- "windwp/nvim-autopairs", -- autoclose parens, brackets, quotes, etc...
-  { "windwp/nvim-ts-autotag", dependencies = { "nvim-treesitter" } }, -- autoclose tags
+  {
+    "windwp/nvim-autopairs",
+    event = { "InsertEnter" },
+    dependencies = {
+      "hrsh7th/nvim-cmp",
+    },
+    config = function()
+      -- import nvim-autopairs
+      local autopairs = require("nvim-autopairs")
+
+      -- configure autopairs
+      autopairs.setup({
+        check_ts = true, -- enable treesitter
+        ts_config = {
+          lua = { "string" }, -- don't add pairs in lua string treesitter nodes
+          javascript = { "template_string" }, -- don't add pairs in javscript template_string treesitter nodes
+          java = false, -- don't check treesitter on java
+        },
+      })
+
+      -- import nvim-autopairs completion functionality
+      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
+      -- import nvim-cmp plugin (completions plugin)
+      local cmp = require("cmp")
+
+      -- make autopairs and completion work together
+      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+    end,
+  },
 
   -- git integration
   "lewis6991/gitsigns.nvim", -- show line modifications on left hand side
@@ -126,4 +154,13 @@ require("lazy").setup({
   -- golang
   "ray-x/go.nvim",
   "ray-x/guihua.lua", -- recommended if need floating window support
+  {
+    "bluz71/vim-nightfly-guicolors",
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      -- load the colorscheme here
+      vim.cmd([[colorscheme nightfly]])
+      vim.cmd([[highlight Normal guibg=none]])
+    end,
+  },
 })

@@ -14,7 +14,6 @@ else
   require("hoolek.plugins.lsp.lspsaga")
   require("hoolek.plugins.lsp.lspconfig")
   require("hoolek.plugins.lsp.null-ls")
-  require("hoolek.plugins.autopairs")
   require("hoolek.plugins.treesitter")
   require("hoolek.plugins.gitsigns")
   require("hoolek.plugins.web-devicons")

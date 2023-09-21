@@ -18,7 +18,7 @@ null_ls.setup({
     formatting.prettier, -- js/ts formatter
     formatting.stylua, -- lua formatter
     formatting.eslint_d,
-    diagnostics.eslint_d.with({ -- js/ts linter
+    diagnostics.eslint.with({ -- js/ts linter
       diagnostics_format = " [eslint]#{m}\n(#{c})",
     }),
     -- python development
