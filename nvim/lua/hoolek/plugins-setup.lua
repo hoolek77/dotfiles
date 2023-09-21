@@ -132,9 +132,6 @@ require("lazy").setup({
   -- git blame
   "f-person/git-blame.nvim",
 
-  -- trailing whitespaces
-  -- "lukoshkin/trailing-whitespace",
-
   -- colorizer
   "norcalli/nvim-colorizer.lua",
 
@@ -154,13 +151,4 @@ require("lazy").setup({
   -- golang
   "ray-x/go.nvim",
   "ray-x/guihua.lua", -- recommended if need floating window support
-  {
-    "bluz71/vim-nightfly-guicolors",
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      -- load the colorscheme here
-      vim.cmd([[colorscheme nightfly]])
-      vim.cmd([[highlight Normal guibg=none]])
-    end,
-  },
 })
