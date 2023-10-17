@@ -1,12 +1,8 @@
 tap "1password/tap"
 tap "dopplerhq/cli"
 tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/core"
 tap "homebrew/services"
 tap "koekeishiya/formulae"
-tap "shivammathur/php"
-tap "stripe/stripe-cli"
 # C library implementing the SSH2 protocol
 brew "libssh2"
 # Get a file from an HTTP, HTTPS or FTP server
@@ -15,6 +11,8 @@ brew "curl"
 brew "docker"
 # Isolated development environments using Docker
 brew "docker-compose"
+# Command-line fuzzy finder written in Go
+brew "fzf"
 # Graphics library to dynamically manipulate images
 brew "gd"
 # Git extension for versioning large files
@@ -27,8 +25,8 @@ brew "neofetch"
 brew "neovim"
 # Platform built on V8 to build network applications
 brew "node"
-# General-purpose scripting language
-brew "php"
+# Shell command parallelization utility
+brew "parallel"
 # Fast, disk space efficient package manager
 brew "pnpm"
 # Interpreted, interactive, object-oriented programming language
@@ -41,18 +39,16 @@ brew "svgo"
 brew "swig"
 # Terminal multiplexer
 brew "tmux"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
 # The official Doppler CLI for managing your secrets
 brew "dopplerhq/cli/doppler"
 # Simple hotkey-daemon for macOS.
 brew "koekeishiya/formulae/skhd"
 # A tiling window manager for macOS based on binary space partitioning.
 brew "koekeishiya/formulae/yabai"
-# Stripe CLI utility
-brew "stripe/stripe-cli/stripe"
-# Command-line helper for the 1Password password manager
+# Command-line interface for 1Password
 cask "1password-cli"
-# Tools for building Android applications
-cask "android-studio"
 # Web browser focusing on privacy
 cask "brave-browser"
 # Voice and text chat software
@@ -61,10 +57,10 @@ cask "discord"
 cask "fig"
 # Web browser
 cask "firefox"
+# Screen color temperature controller
+cask "flux"
 # Web browser
 cask "google-chrome"
-# GraphQL IDE for better development workflows
-cask "graphql-playground"
 # HTTP and GraphQL Client
 cask "insomnia"
 # Terminal emulator as alternative to Apple's Terminal app
@@ -73,10 +69,6 @@ cask "iterm2"
 cask "microsoft-edge"
 # App to write, plan, collaborate, and get organized
 cask "notion"
-# Open-source software for live streaming and screen recording
-cask "obs"
-# Administration and development platform for PostgreSQL
-cask "pgadmin4"
 # Collaboration platform for API development
 cask "postman"
 # Control your tools with a few keystrokes
@@ -91,8 +83,6 @@ cask "spotify"
 cask "todoist"
 # Free and open-source OpenVPN client
 cask "tunnelblick"
-# UML CASE Tool supporting UML 2, SysML and Business Process Modeling Notation
-cask "visual-paradigm"
 # Open-source code editor
 cask "visual-studio-code"
 # JavaScript IDE
