@@ -151,4 +151,11 @@ require("lazy").setup({
   -- golang
   "ray-x/go.nvim",
   "ray-x/guihua.lua", -- recommended if need floating window support
+
+  {
+    "mg979/vim-visual-multi",
+    branch = "master",
+  },
+
+  "princejoogie/tailwind-highlight.nvim",
 })

@@ -18,6 +18,8 @@ end
 
 local keymap = vim.keymap
 
+local tw_highlight = require("tailwind-highlight")
+
 -- enable keybinds only for when lsp server available
 local on_attach = function(client, bufnr)
   -- keybind options
@@ -44,6 +46,14 @@ local on_attach = function(client, bufnr)
     keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports
     keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables
     keymap.set("n", "<leader>mi", ":TypescriptAddMissingImports<CR>") -- add missing imports
+  end
+
+  if client.name == "tailwindcss" then
+    tw_highlight.setup(client, bufnr, {
+      single_column = false,
+      mode = "background",
+      debounce = 200,
+    })
   end
 end
 
@@ -74,6 +84,16 @@ lspconfig["cssls"].setup({
 lspconfig["tailwindcss"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
+  settings = {
+    tailwindCSS = {
+      experimental = {
+        classRegex = {
+          { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+          { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+        },
+      },
+    },
+  },
 })
 
 -- configure astro server
