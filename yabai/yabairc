@@ -32,3 +32,5 @@ yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Simulator$" manage=off
 yabai -m rule --add app="^Safari" manage=off
+yabai -m rule --add app="^Podcasts" manage=off
+yabai -m rule --add app="^Music" manage=off

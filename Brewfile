@@ -3,6 +3,7 @@ tap "dopplerhq/cli"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "koekeishiya/formulae"
+tap "surrealdb/tap"
 # C library implementing the SSH2 protocol
 brew "libssh2"
 # Get a file from an HTTP, HTTPS or FTP server
@@ -33,8 +34,6 @@ brew "pnpm"
 brew "python@3.11"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Nodejs-based tool for optimizing SVG vector graphics files
-brew "svgo"
 # Generate scripting interfaces to C/C++ code
 brew "swig"
 # Terminal multiplexer
@@ -47,6 +46,8 @@ brew "dopplerhq/cli/doppler"
 brew "koekeishiya/formulae/skhd"
 # A tiling window manager for macOS based on binary space partitioning.
 brew "koekeishiya/formulae/yabai"
+# A scalable, distributed, collaborative, document-graph database
+brew "surrealdb/tap/surreal"
 # Command-line interface for 1Password
 cask "1password-cli"
 # Web browser focusing on privacy
@@ -81,14 +82,8 @@ cask "slack"
 cask "spotify"
 # To-do list
 cask "todoist"
-# Free and open-source OpenVPN client
-cask "tunnelblick"
 # Open-source code editor
 cask "visual-studio-code"
-# JavaScript IDE
-cask "webstorm"
-# Video communication and virtual meeting platform
-cask "zoom"
 vscode "aaron-bond.better-comments"
 vscode "adpyke.codesnap"
 vscode "akamud.vscode-theme-onedark"
