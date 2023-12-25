@@ -1,7 +1,7 @@
 require("catppuccin").setup({
   -- transparent_background = true,
   integrations = {
-    cmp = true,
+    cmp = false,
     gitsigns = true,
     mason = true,
     nvimtree = true,
@@ -10,5 +10,6 @@ require("catppuccin").setup({
     },
     harpoon = true,
   },
+  transparent_background = true,
 })
-vim.cmd.colorscheme("catppuccin-macchiato")
+vim.cmd.colorscheme("catppuccin-mocha")

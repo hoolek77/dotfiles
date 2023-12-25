@@ -5,7 +5,7 @@ end
 
 wilder.setup({ modes = { ":", "/", "?" } })
 
-local blue_accent = wilder.make_hl("WilderAccent", "Pmenu", { { a = 1 }, { a = 1 }, { foreground = "#1688f0" } })
+local accent = wilder.make_hl("WilderAccent", "Pmenu", { { a = 1 }, { a = 1 }, { foreground = "#dd1c77" } })
 
 wilder.set_option(
   "renderer",
@@ -15,7 +15,7 @@ wilder.set_option(
     min_height = "50%", -- to set a fixed height, set max_height to the same value
     reverse = 0, -- if 1, shows the candidates from bottom to top
     highlights = {
-      accent = blue_accent,
+      accent = accent,
     },
   }))
 )

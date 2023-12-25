@@ -17,9 +17,22 @@ if not lspkind_status then
 end
 
 -- load vs-code like snippets from plugins (e.g. friendly-snippets)
--- require("luasnip/loaders/from_vscode").lazy_load()
+require("luasnip/loaders/from_vscode").lazy_load()
 
 vim.opt.completeopt = "menu,menuone,noselect"
+
+local function border(hl_name)
+  return {
+    { "╭", hl_name },
+    { "─", hl_name },
+    { "╮", hl_name },
+    { "│", hl_name },
+    { "╯", hl_name },
+    { "─", hl_name },
+    { "╰", hl_name },
+    { "│", hl_name },
+  }
+end
 
 cmp.setup({
   snippet = {
@@ -54,5 +67,9 @@ cmp.setup({
   },
   completion = {
     completeopt = "menu,menuone,noinsert",
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   },
 })
