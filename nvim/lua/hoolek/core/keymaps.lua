@@ -41,7 +41,8 @@ keymap.set("n", "<leader>tc", ":NvimTreeCollapse<CR>")
 
 -- telescope
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
-keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
+-- keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
+keymap.set("n", "<leader>fs", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neoinstance
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
@@ -74,18 +75,35 @@ keymap.set("n", "<leader>tt", "<cmd>TroubleToggle<cr>")
 keymap.set("n", "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
 keymap.set("n", "<leader>td", "<cmd>TroubleToggle document_diagnostics<cr>")
 
-local mark = require("harpoon.mark")
-local ui = require("harpoon.ui")
+local harpoon = require("harpoon")
 
-keymap.set("n", "<leader>a", mark.add_file)
-keymap.set("n", "<leader><C-e>", ui.toggle_quick_menu)
+harpoon:setup({
+  settings = {
+    save_on_toggle = true,
+    save_on_ui_close = true,
+  },
+})
 
-keymap.set("n", "<C-t>", function()
-  ui.nav_file(1)
+vim.keymap.set("n", "<leader>a", function()
+  harpoon:list():append()
 end)
-keymap.set("n", "<C-n>", function()
-  ui.nav_file(2)
+vim.keymap.set("n", "<C-e>", function()
+  harpoon.ui:toggle_quick_menu(harpoon:list())
 end)
-keymap.set("n", "<C-s>", function()
-  ui.nav_file(3)
+
+vim.keymap.set("n", "<C-t>", function()
+  harpoon:list():select(1)
+end)
+vim.keymap.set("n", "<C-n>", function()
+  harpoon:list():select(2)
+end)
+vim.keymap.set("n", "<C-s>", function()
+  harpoon:list():select(3)
+end)
+
+vim.keymap.set("n", "<C-s-p>", function()
+  harpoon:list():prev()
+end)
+vim.keymap.set("n", "<C-s-n>", function()
+  harpoon:list():next()
 end)
