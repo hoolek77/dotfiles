@@ -1,6 +1,5 @@
 # Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-
 export ZSH="/Users/szymonkin/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
@@ -18,6 +17,8 @@ alias jjm="cd /Users/szymonkin/dev/jjm/vinted-frontend/"
 alias devscard="personal_cfg && cd /Users/szymonkin/dev/coders-crew/devscard/"
 alias webwolf="personal_cfg && cd /Users/szymonkin/dev/webwolf/cam-recorder-frontend"
 alias webwolf_backend_start="personal_cfg && cd /Users/szymonkin/dev/webwolf/cam-recorder-backend && ./vendor/bin/sail up"
+
+alias cat="bat"
 
 function copy_branch_name() {
   git rev-parse --abbrev-ref HEAD |  tr -d '\n' | pbcopy
@@ -43,6 +44,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+export GPG_TTY=$(tty)
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -55,6 +58,13 @@ esac
 # pnpm end
 
 alias python=/usr/bin/python3
+
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+path+=(
+    $(ruby -e 'puts File.join(Gem.user_dir, "bin")')
+)
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
