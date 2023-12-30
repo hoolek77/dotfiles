@@ -50,5 +50,13 @@ nvimtree.setup({
   filters = {
     dotfiles = false,
     git_ignored = false,
+    custom = {
+      ".cache",
+      ".git",
+      ".DS_Store",
+      ".vscode",
+      "out",
+      "turbo",
+    },
   },
 })

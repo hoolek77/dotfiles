@@ -182,4 +182,6 @@ require("lazy").setup({
       require("telescope").load_extension("live_grep_args")
     end,
   },
+
+  "sindrets/diffview.nvim",
 })

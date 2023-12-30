@@ -75,6 +75,9 @@ keymap.set("n", "<leader>tt", "<cmd>TroubleToggle<cr>")
 keymap.set("n", "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
 keymap.set("n", "<leader>td", "<cmd>TroubleToggle document_diagnostics<cr>")
 
+-- diffview
+keymap.set("n", "<leader>dv", "<cmd>DiffviewOpen<cr>")
+
 local harpoon = require("harpoon")
 
 harpoon:setup({
