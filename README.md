@@ -29,6 +29,7 @@ ln -s ~/.dotfiles/.nvim ~/.nvim
 ln -s ~/.dotfiles/.skhd ~/.skhd
 ln -s ~/.dotfiles/.yabai ~/.yabai
 ln -s ~/.dotfiles/borders ~/.config/borders
+ln -s ~/.dotfiles/starship.toml ~/.config/starship.toml
 ```
 
 4. Install Homebrew, followed by the software listed in the Brewfile.

@@ -19,8 +19,8 @@ nvimtree.setup({
     icons = {
       glyphs = {
         folder = {
-          arrow_closed = "", -- arrow when folder is closed
-          arrow_open = "", -- arrow when folder is open
+          -- arrow_closed = "", -- arrow when folder is closed
+          -- arrow_open = "", -- arrow when folder is open
         },
       },
     },
@@ -52,7 +52,7 @@ nvimtree.setup({
     git_ignored = false,
     custom = {
       ".cache",
-      ".git",
+      ".git/",
       ".DS_Store",
       ".vscode",
       "/out",
