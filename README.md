@@ -28,6 +28,7 @@ ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/.dotfiles/.nvim ~/.nvim
 ln -s ~/.dotfiles/.skhd ~/.skhd
 ln -s ~/.dotfiles/.yabai ~/.yabai
+ln -s ~/.dotfiles/borders ~/.config/borders
 ```
 
 4. Install Homebrew, followed by the software listed in the Brewfile.
