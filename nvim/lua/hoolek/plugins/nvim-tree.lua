@@ -55,7 +55,7 @@ nvimtree.setup({
       ".git",
       ".DS_Store",
       ".vscode",
-      "out",
+      "/out",
       "turbo",
     },
   },

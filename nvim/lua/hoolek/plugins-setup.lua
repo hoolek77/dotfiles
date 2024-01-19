@@ -18,6 +18,7 @@ require("lazy").setup({
 
   -- tmux & split window navigation
   "christoomey/vim-tmux-navigator",
+  "rebelot/kanagawa.nvim",
 
   "szw/vim-maximizer", -- maximizes and restores current window
 
