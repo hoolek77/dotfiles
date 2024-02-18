@@ -1,9 +1,8 @@
-vim.g.mapleader = " "
+local nnoremap = require("hoolek.core.keymap-utils").nnoremap
 
 local keymap = vim.keymap
 
 -- general keymaps
-
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 keymap.set("n", "x", '"_x')
@@ -38,6 +37,11 @@ keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>")
 -- ntree
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 keymap.set("n", "<leader>tc", ":NvimTreeCollapse<CR>")
+
+-- Map Oil to <leader>e
+-- nnoremap("<leader>e", function()
+--   require("oil").toggle_float()
+-- end)
 
 -- telescope
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
@@ -80,33 +84,38 @@ keymap.set("n", "<leader>dv", "<cmd>DiffviewOpen<cr>")
 
 local harpoon = require("harpoon")
 
-harpoon:setup({
-  settings = {
-    save_on_toggle = true,
-    save_on_ui_close = true,
-  },
-})
-
-vim.keymap.set("n", "<leader>a", function()
+nnoremap("<leader>a", function()
   harpoon:list():append()
 end)
-vim.keymap.set("n", "<C-e>", function()
+
+nnoremap("<C-e>", function()
   harpoon.ui:toggle_quick_menu(harpoon:list())
 end)
 
-vim.keymap.set("n", "<C-t>", function()
+nnoremap("<leader>1", function()
   harpoon:list():select(1)
 end)
-vim.keymap.set("n", "<C-n>", function()
+
+nnoremap("<leader>2", function()
   harpoon:list():select(2)
 end)
-vim.keymap.set("n", "<C-s>", function()
+
+nnoremap("<leader>3", function()
   harpoon:list():select(3)
 end)
 
-vim.keymap.set("n", "<C-s-p>", function()
+nnoremap("<leader>4", function()
+  harpoon:list():select(4)
+end)
+
+nnoremap("<leader>5", function()
+  harpoon:list():select(5)
+end)
+
+nnoremap("<C-s-p>", function()
   harpoon:list():prev()
 end)
-vim.keymap.set("n", "<C-s-n>", function()
+
+nnoremap("<C-s-n>", function()
   harpoon:list():next()
 end)

@@ -35,3 +35,9 @@ opt.iskeyword:append("-")
 opt.termguicolors = true
 opt.background = "dark" -- colorschemes that can be light or dark will be made dark
 opt.signcolumn = "yes" -- show sign column so that text doesn't shift
+
+opt.cursorline = true -- highlight current line
+
+opt.scrolloff = 8 -- keep 8 lines above and below cursor when scrolling
+
+vim.g.mapleader = " "
