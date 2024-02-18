@@ -1,8 +1,9 @@
 [user]
   email = szymon.kin@gmail.com
   name = hoolek77
-[includeIf "gitdir:~/dev/jjm/"]
-  path = .gitconfig-jjm
+; reference for future
+; [includeIf "gitdir:~/dev/jjm/"]
+;   path = .gitconfig-jjm
 [filter "lfs"]
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
