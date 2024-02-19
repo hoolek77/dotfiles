@@ -39,6 +39,9 @@ nnoremap("#", "#zz")
 vnoremap("J", ":m '>+1<CR>gv=gv") -- move selected lines down
 vnoremap("K", ":m '<-2<CR>gv=gv") -- move selected lines up
 
+-- tmux sessionizer
+nnoremap("<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
 -- plugin keymaps
 
 -- maximizer

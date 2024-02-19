@@ -59,9 +59,10 @@ esac
 
 alias python=/usr/bin/python3
 
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+bindkey -s ^f "tmux-sessionizer\n"
 
 path+=(
     $(ruby -e 'puts File.join(Gem.user_dir, "bin")')
