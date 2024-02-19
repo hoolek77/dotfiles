@@ -5,4 +5,5 @@ else
   require("hoolek.core.lazy")
   require("hoolek.core.keymaps")
   require("hoolek.core.fugitive")
+  require("hoolek.core.highlight_yank")
 end

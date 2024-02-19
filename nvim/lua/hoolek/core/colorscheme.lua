@@ -1,9 +1,8 @@
 require("catppuccin").setup({
-  -- transparent_background = true,
+  transparent_background = true,
   integrations = {
     cmp = false,
     gitsigns = true,
-
     mason = true,
     nvimtree = true,
     telescope = {
