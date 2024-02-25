@@ -21,6 +21,9 @@ nnoremap("<leader>tx", ":tabclose<CR>") -- close current tab
 nnoremap("<leader>tn", ":tabn<CR>") -- go to next tab
 nnoremap("<leader>tp", ":tabp<CR>") -- go to previous tab
 
+xnoremap("p", '"_dP') -- paste without yanking
+xnoremap("<leader>p", "dP") -- default paste behavior
+
 -- Center buffer while navigating
 nnoremap("<C-d>", "<C-d>zz") -- center view when going half page down
 nnoremap("<C-u>", "<C-u>zz") -- center view when going half page up
@@ -52,9 +55,9 @@ nnoremap("<leader>e", ":NvimTreeToggle<CR>")
 nnoremap("<leader>tc", ":NvimTreeCollapse<CR>")
 
 -- Map Oil to <leader>e
--- nnoremap("<leader>e", function()
---   require("oil").toggle_float()
--- end)
+nnoremap("<leader>E", function()
+  require("oil").toggle_float()
+end)
 
 -- telescope
 nnoremap("<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
@@ -68,7 +71,7 @@ nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help ta
 nnoremap("<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
 nnoremap("<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
 nnoremap("<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
-nnoremap("<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
+nnoremap("<leader>gs", "<cmd>vertical Git<cr><C-w>10<") -- list current changes per file with diff preview ["gs" for git status]
 
 -- restart lsp server (not on youtube nvideo)
 nnoremap("<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
@@ -98,6 +101,7 @@ nnoremap("<leader>sp", '<cmd>lua require("spectre").open_file_search({select_wor
 nnoremap("<leader>tt", "<cmd>TroubleToggle<cr>")
 nnoremap("<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
 nnoremap("<leader>td", "<cmd>TroubleToggle document_diagnostics<cr>")
+nnoremap("<leader>tq", "<cmd>TroubleToggle quickfix<cr>")
 
 -- diffview
 nnoremap("<leader>dv", "<cmd>DiffviewOpen<cr>")
@@ -139,5 +143,3 @@ end)
 nnoremap("<C-s-n>", function()
   harpoon:list():next()
 end)
-
-xnoremap("<leader>p", '"_dP')

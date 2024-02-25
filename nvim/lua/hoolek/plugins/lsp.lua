@@ -15,9 +15,6 @@ return {
       -- Install neodev for better nvim configuration and plugin authoring via lsp configurations
       "folke/neodev.nvim",
 
-      -- Progress/Status update for LSP
-      { "j-hui/fidget.nvim", tag = "legacy" },
-
       {
         "glepnir/lspsaga.nvim",
         branch = "main",

@@ -9,6 +9,10 @@ return {
         text = {
           spinner = "dots_negative",
         },
+        window = {
+          blend = 0,
+          relative = "editor",
+        },
       })
     end,
   },

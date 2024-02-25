@@ -12,7 +12,20 @@ return {
         end,
       })
 
-      require("oil").setup({
+      local oil = require("oil")
+
+      local copy_entry_relative_path = function()
+        local entry = oil.get_cursor_entry()
+        local dir = oil.get_current_dir()
+        if not entry or not dir then
+          return
+        end
+        local filepath = dir .. entry.name
+        local relpath = vim.fn.fnamemodify(filepath, ":.")
+        vim.fn.setreg("+", relpath)
+      end
+
+      oil.setup({
         use_default_keymaps = false,
         keymaps = {
           ["g?"] = "actions.show_help",
@@ -30,6 +43,8 @@ return {
           ["gs"] = "actions.change_sort",
           ["gx"] = "actions.open_external",
           ["g."] = "actions.toggle_hidden",
+          ["gy"] = "actions.copy_entry_path",
+          ["gY"] = copy_entry_relative_path,
         },
         view_options = {
           show_hidden = true,

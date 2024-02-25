@@ -41,3 +41,9 @@ opt.cursorline = true -- highlight current line
 opt.scrolloff = 8 -- keep 8 lines above and below cursor when scrolling
 
 vim.g.mapleader = " "
+
+-- ufo plgin settingsu
+vim.o.foldcolumn = "0" -- '0' is not bad
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true

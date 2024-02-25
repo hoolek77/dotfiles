@@ -3,7 +3,6 @@ return {
     "catppuccin/nvim",
     config = function()
       require("catppuccin").setup({
-        -- transparent_background = true,
         integrations = {
           cmp = false,
           gitsigns = true,
@@ -13,7 +12,7 @@ return {
             enabled = true,
           },
           harpoon = true,
-          fidget = true,
+          -- fidget = true,
           dashboard = true,
           indent_blankline = {
             enabled = true,
