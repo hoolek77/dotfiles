@@ -13,11 +13,6 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 alias vim="nvim"
-alias jjm="cd /Users/szymonkin/dev/jjm/vinted-frontend/"
-alias devscard="personal_cfg && cd /Users/szymonkin/dev/coders-crew/devscard/"
-alias webwolf="personal_cfg && cd /Users/szymonkin/dev/webwolf/cam-recorder-frontend"
-alias webwolf_backend_start="personal_cfg && cd /Users/szymonkin/dev/webwolf/cam-recorder-backend && ./vendor/bin/sail up"
-
 alias cat="bat"
 
 function copy_branch_name() {
@@ -45,9 +40,6 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 export GPG_TTY=$(tty)
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # pnpm
 export PNPM_HOME="/Users/szymonkin/Library/pnpm"
