@@ -50,12 +50,8 @@ nnoremap("<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 -- maximizer
 nnoremap("<leader>sm", ":MaximizerToggle<CR>")
 
--- ntree
-nnoremap("<leader>e", ":NvimTreeToggle<CR>")
-nnoremap("<leader>tc", ":NvimTreeCollapse<CR>")
-
--- Map Oil to <leader>e
-nnoremap("<leader>E", function()
+-- oil
+nnoremap("<leader>e", function()
   require("oil").toggle_float()
 end)
 
@@ -71,10 +67,15 @@ nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help ta
 nnoremap("<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
 nnoremap("<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
 nnoremap("<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
-nnoremap("<leader>gs", "<cmd>vertical Git<cr><C-w>10<") -- list current changes per file with diff preview ["gs" for git status]
+
+nnoremap("<leader>gs", "<cmd>Git<cr>") -- git integration
 
 -- restart lsp server (not on youtube nvideo)
 nnoremap("<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
+
+-- neotest
+nnoremap("<leader>tf", ":TestFile<CR>")
+nnoremap("<leader>tc", ":TestNearest<CR>")
 
 -- Press 'S' for quick find/replace for the word under the cursor
 nnoremap("S", function()
@@ -102,6 +103,8 @@ nnoremap("<leader>tt", "<cmd>TroubleToggle<cr>")
 nnoremap("<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
 nnoremap("<leader>td", "<cmd>TroubleToggle document_diagnostics<cr>")
 nnoremap("<leader>tq", "<cmd>TroubleToggle quickfix<cr>")
+nnoremap("<leader>qn", "<cmd>cn<cr>")
+nnoremap("<leader>qp", "<cmd>cp<cr>")
 
 -- diffview
 nnoremap("<leader>dv", "<cmd>DiffviewOpen<cr>")
@@ -109,7 +112,7 @@ nnoremap("<leader>dv", "<cmd>DiffviewOpen<cr>")
 local harpoon = require("harpoon")
 
 nnoremap("<leader>a", function()
-  harpoon:list():append()
+  harpoon:list():add()
 end)
 
 nnoremap("<C-e>", function()

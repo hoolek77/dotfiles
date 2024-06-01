@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-path_to_config=~/dev/personal/.dotfiles/scripts/scripts-config/tmux-sessionizer
-
 if [[ $# -eq 1 ]]; then
     selected=$1
 else

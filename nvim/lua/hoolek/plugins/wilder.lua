@@ -41,7 +41,6 @@ return {
             border = mauve_highlight,
             accent = mauve_highlight,
           },
-          pumblend = 5,
           min_width = "100%",
           min_height = "40%",
           max_height = "40%",

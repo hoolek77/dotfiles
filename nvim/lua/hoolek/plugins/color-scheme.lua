@@ -3,6 +3,7 @@ return {
     "catppuccin/nvim",
     config = function()
       require("catppuccin").setup({
+        transparent_background = true,
         integrations = {
           cmp = false,
           gitsigns = true,
@@ -22,10 +23,12 @@ return {
           native_lsp = { enabled = true },
           treesitter = true,
           treesitter_context = true,
+          neogit = true,
+          notify = true,
+          noice = true,
         },
-        -- transparent_background = true,
       })
-      vim.cmd.colorscheme("catppuccin-mocha")
+      vim.cmd.colorscheme("catppuccin-macchiato")
 
       -- Hide all semantic highlights until upstream issues are resolved (https://github.com/catppuccin/nvim/issues/480)
       for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do

@@ -1,6 +1,7 @@
 [user]
   email = szymon.kin@gmail.com
   name = hoolek77
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINuBqWWIHr2uy+hkiuv1xEOUzLUQtlLFfUN58oIjNoJO
 ; reference for future
 ; [includeIf "gitdir:~/dev/jjm/"]
 ;   path = .gitconfig-jjm
@@ -11,3 +12,12 @@
   clean = git-lfs clean -- %f
 [core]
   editor = nvim
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+  gpgsign = true

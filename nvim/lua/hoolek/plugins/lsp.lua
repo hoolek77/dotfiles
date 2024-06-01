@@ -28,6 +28,7 @@ return {
       "jayp0521/mason-null-ls.nvim", -- bridges gap b/w mason & null-ls
 
       "jose-elias-alvarez/typescript.nvim", -- additional functionality for typescript server (e.g. rename file & update imports)
+      "pmizio/typescript-tools.nvim",
       "onsails/lspkind.nvim", -- vs-code like icons for autocompletion
 
       "neovim/nvim-lspconfig", -- easily configure language servers
@@ -48,7 +49,7 @@ return {
       require("mason-lspconfig").setup({
         -- list of servers for mason to install
         ensure_installed = {
-          "tsserver",
+          -- "tsserver",
           "html",
           "cssls",
           "tailwindcss",
@@ -75,7 +76,7 @@ return {
       local keymap = vim.keymap
 
       local lspconfig = require("lspconfig")
-      local typescript = require("typescript")
+      local typescript = require("typescript-tools")
       local cmp_nvim_lsp = require("cmp_nvim_lsp")
       local tw_highlight = require("tailwind-highlight")
 
@@ -85,26 +86,36 @@ return {
         local opts = { noremap = true, silent = true, buffer = bufnr }
 
         -- set keybinds
-        keymap.set("n", "gf", "<cmd>Lspsaga finder<CR>", opts) -- show definition, references
-        keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
+        keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+        -- keymap.set("n", "gf", "<cmd>Lspsaga finder<CR>", opts) -- show definition, references
+        keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- got to declaration
         keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
-        -- keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts) -- see definition and make edits in window
-        keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
-        keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
-        keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
+        keymap.set("n", "gi", "<cmd>Trouble lsp_implementations<CR>", opts) -- go to implementation
+        keymap.set("n", "gr", "<cmd>Trouble lsp_references<CR>", opts) -- go to implementation
+        keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions
+        -- keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
+        keymap.set("n", "<leader>rn", function()
+          return ":IncRename " .. vim.fn.expand("<cword>")
+        end, { expr = true })
         keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
         keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
         keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
         keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
         keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
         keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
+        keymap.set(
+          "n",
+          "<leader>ht",
+          "<cmd>lua vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())<CR>",
+          opts
+        ) -- see outline on right hand side
 
         -- typescript specific keymaps (e.g. rename file and update imports)
-        if client.name == "tsserver" then
-          keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
-          keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports
-          keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables
-          keymap.set("n", "<leader>mi", ":TypescriptAddMissingImports<CR>") -- add missing imports
+        if client.name == "typescript-tools" then
+          keymap.set("n", "<leader>rf", ":TSToolsRenameFile<CR>") -- rename file and update imports
+          keymap.set("n", "<leader>oi", ":TSToolsOrganizeImports<CR>") -- organize imports
+          keymap.set("n", "<leader>ru", ":TSToolsRemoveUnusedImports<CR>") -- remove unused variables
+          keymap.set("n", "<leader>mi", ":TSToolsAddMissingImports<CR>") -- add missing imports
         end
 
         if client.name == "tailwindcss" then
@@ -125,11 +136,25 @@ return {
         on_attach = on_attach,
       })
 
-      -- configure typescript server with plugin
+      local mason_registry = require("mason-registry")
+      local tsserver_path = mason_registry.get_package("typescript-language-server"):get_install_path()
+
       typescript.setup({
-        server = {
-          capabilities = capabilities,
-          on_attach = on_attach,
+        -- capabilities = capabilities,
+        on_attach = on_attach,
+        settings = {
+          tsserver_path = tsserver_path .. "/node_modules/typescript/lib/tsserver.js",
+          tsserver_file_preferences = {
+            includeCompletionsForModuleExports = true,
+            importModuleSpecifierPreference = "non-relative",
+            importModuleSpecifierEnding = "non-relative",
+          },
+          tsserver_plugins = {
+            -- for TypeScript v4.9+
+            "@styled/typescript-styled-plugin",
+            -- or for older TypeScript versions
+            -- "typescript-styled-plugin",
+          },
         },
       })
 
@@ -230,9 +255,6 @@ return {
             hints = { "underline" },
             warnings = { "underline" },
             information = { "underline" },
-          },
-          inlay_hints = {
-            background = true,
           },
         },
       })

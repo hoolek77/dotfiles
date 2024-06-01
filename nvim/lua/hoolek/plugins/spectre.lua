@@ -25,6 +25,19 @@ return {
             desc = "send all items to quickfix",
           },
         },
+        find_engine = {
+          ["rg"] = {
+            cmd = "rg",
+            args = {
+              "--pcre2",
+              "--color=never",
+              "--no-heading",
+              "--with-filename",
+              "--line-number",
+              "--column",
+            },
+          },
+        },
       })
     end,
   },

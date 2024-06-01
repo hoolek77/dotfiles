@@ -28,6 +28,8 @@ function ls () {
   fi
 }
 
+export HISTIGNORE="history:tmux-sessionizer:clear:ls"
+
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
@@ -54,11 +56,22 @@ alias python=/usr/bin/python3
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+
 bindkey -s ^f "tmux-sessionizer\n"
+
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {2..} | bat --color=always -pl sh'
+  --preview-window up:3:hidden:wrap
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-t:track+clear-query'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic"
 
 path+=(
     $(ruby -e 'puts File.join(Gem.user_dir, "bin")')
 )
+
+eval "$(fzf --zsh)"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
