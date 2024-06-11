@@ -5,6 +5,9 @@ return {
     config = function()
       local notify = require("notify")
 
+      require("notify").setup({
+        background_colour = "#000000",
+      })
       local filtered_message = {
         "No information available",
         "[typescript-tools] We detected usage of `tsserver_path` to integrate with Mason. This integration is now built-in you can remove unnecessary code from your config.",

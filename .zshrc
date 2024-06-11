@@ -1,5 +1,3 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 export ZSH="/Users/szymonkin/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
@@ -8,7 +6,9 @@ plugins=(
   git
   zsh-autosuggestions
   zsh-syntax-highlighting
+  zsh-npm-scripts-autocomplete
 )
+
 
 source $ZSH/oh-my-zsh.sh
 
@@ -53,9 +53,6 @@ esac
 
 alias python=/usr/bin/python3
 
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 
 bindkey -s ^f "tmux-sessionizer\n"
 
@@ -71,9 +68,8 @@ path+=(
     $(ruby -e 'puts File.join(Gem.user_dir, "bin")')
 )
 
-eval "$(fzf --zsh)"
-
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 eval "$(starship init zsh)"
+eval "$(fzf --zsh)"
