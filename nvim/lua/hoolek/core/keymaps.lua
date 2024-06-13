@@ -45,29 +45,6 @@ vnoremap("K", ":m '<-2<CR>gv=gv") -- move selected lines up
 -- tmux sessionizer
 nnoremap("<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
--- plugin keymaps
-
--- maximizer
-nnoremap("<leader>sm", ":MaximizerToggle<CR>")
-
--- oil
-nnoremap("<leader>e", function()
-  require("oil").toggle_float()
-end)
-
--- telescope
-nnoremap("<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
--- keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
-nnoremap("<leader>fs", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
-nnoremap("<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
-nnoremap("<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neoinstance
-nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
-
--- telescope git commands (not on youtube nvideo)
-nnoremap("<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
-nnoremap("<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
-nnoremap("<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
-
 nnoremap("<leader>gs", "<cmd>Git<cr>") -- git integration
 
 -- restart lsp server (not on youtube nvideo)
@@ -84,65 +61,9 @@ nnoremap("S", function()
   vim.api.nvim_feedkeys(keys, "n", false)
 end)
 
--- nspectre search
-nnoremap("<leader>S", '<cmd>lua require("spectre").open()<CR>', {
-  desc = "Open Spectre",
-})
-nnoremap("<leader>sw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
-  desc = "Search current word",
-})
-nnoremap("<leader>sw", '<esc><cmd>lua require("spectre").open_visual()<CR>', {
-  desc = "Search current word",
-})
-nnoremap("<leader>sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
-  desc = "Search on current file",
-})
-
--- trouble window
-nnoremap("<leader>tt", "<cmd>TroubleToggle<cr>")
-nnoremap("<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
-nnoremap("<leader>td", "<cmd>TroubleToggle document_diagnostics<cr>")
-nnoremap("<leader>tq", "<cmd>TroubleToggle quickfix<cr>")
-nnoremap("<leader>qn", "<cmd>cn<cr>")
-nnoremap("<leader>qp", "<cmd>cp<cr>")
-
--- diffview
-nnoremap("<leader>dv", "<cmd>DiffviewOpen<cr>")
-
-local harpoon = require("harpoon")
-
-nnoremap("<leader>a", function()
-  harpoon:list():add()
-end)
-
-nnoremap("<C-e>", function()
-  harpoon.ui:toggle_quick_menu(harpoon:list())
-end)
-
-nnoremap("<leader>1", function()
-  harpoon:list():select(1)
-end)
-
-nnoremap("<leader>2", function()
-  harpoon:list():select(2)
-end)
-
-nnoremap("<leader>3", function()
-  harpoon:list():select(3)
-end)
-
-nnoremap("<leader>4", function()
-  harpoon:list():select(4)
-end)
-
-nnoremap("<leader>5", function()
-  harpoon:list():select(5)
-end)
-
-nnoremap("<C-s-p>", function()
-  harpoon:list():prev()
-end)
-
-nnoremap("<C-s-n>", function()
-  harpoon:list():next()
+-- Press 'S' in visual mode to replace the selected text
+vnoremap("S", function()
+  local cmd = [["hy:%s/<C-r>h/<C-r>h/gI<Left><Left><left>]]
+  local keys = vim.api.nvim_replace_termcodes(cmd, true, false, true)
+  vim.api.nvim_feedkeys(keys, "n", false)
 end)

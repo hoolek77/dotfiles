@@ -1,4 +1,19 @@
 return {
+  "folke/tokyonight.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
+  config = function()
+    require("tokyonight").setup({
+      transparent = true,
+      style = "storm",
+      styles = {
+        floats = "transparent",
+      },
+    })
+
+    vim.cmd.colorscheme("tokyonight-storm")
+  end,
   -- {
   --   "catppuccin/nvim",
   --   config = function()
@@ -98,21 +113,4 @@ return {
   --     vim.cmd.colorscheme("gruvbox")
   --   end,
   -- },
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-    config = function()
-      require("tokyonight").setup({
-        transparent = true,
-        style = "storm",
-        styles = {
-          floats = "transparent",
-        },
-      })
-
-      vim.cmd.colorscheme("tokyonight-storm")
-    end,
-  },
 }
