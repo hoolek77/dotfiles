@@ -13,6 +13,10 @@ return {
       adapters = {
         require("neotest-jest")({
           jestCommand = "yarn test --",
+          jestConfigFile = "jest.config.js",
+          cwd = function(path)
+            return vim.fn.getcwd()
+          end,
         }),
         -- require("neotest-vim-test")({}),
       },

@@ -62,7 +62,7 @@ nnoremap("S", function()
 end)
 
 -- Press 'S' in visual mode to replace the selected text
-vnoremap("S", function()
+vnoremap("<leader>S", function()
   local cmd = [["hy:%s/<C-r>h/<C-r>h/gI<Left><Left><left>]]
   local keys = vim.api.nvim_replace_termcodes(cmd, true, false, true)
   vim.api.nvim_feedkeys(keys, "n", false)
