@@ -22,8 +22,6 @@ git clone https://github.com/hoolek77/dotfiles.git ~/.dotfiles
 
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/.dotfiles/.gitconfig-jjm ~/.gitconfig-jjm
-ln -s ~/.dotfiles/.gitconfig-personal ~/.gitconfig-personal
 ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/.dotfiles/.nvim ~/.nvim
 ln -s ~/.dotfiles/.skhd ~/.skhd
