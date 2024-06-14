@@ -1,3 +1,16 @@
+# Dotfiles
+
+This repository contains my personal dotfiles and scripts. It is a never-ending WIP and I will never achieve perfection :biblethump:
+
+![Setup screenshot](./images/config-screenshot.png)
+
+## Core of the workflow
+
+1. Neovim
+2. Tmux with custom sessionizer script
+3. Zsh
+4. Yabai
+
 ## Steps to bootstrap a new Mac
 
 1. Install Apple's Command Line Tools, which are prerequisites for Git and Homebrew.
@@ -9,17 +22,12 @@ xcode-select --install
 2. Clone repo into new hidden directory.
 
 ```zsh
-# Use SSH (if set up)...
 git clone git@github.com:hoolek77/dotfiles.git ~/.dotfiles
-
-# ...or use HTTPS and switch remotes later.
-git clone https://github.com/hoolek77/dotfiles.git ~/.dotfiles
 ```
 
-3. Create symlinks in the Home directory to the real files in the repo.
+3. Create symlinks in the Home directory to the config files.
 
 ```zsh
-
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
@@ -38,9 +46,6 @@ ln -s ~/.dotfiles/starship.toml ~/.config/starship.toml
 # Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Then pass in the Brewfile location...
-brew bundle --file ~/.dotfiles/Brewfile
-
-# ...or move to the directory first.
+# Then run the bundle command in the dotfiles directory
 cd ~/.dotfiles && brew bundle
 ```
