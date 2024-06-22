@@ -28,6 +28,17 @@ function ls () {
   fi
 }
 
+
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+
 export HISTIGNORE="history:tmux-sessionizer:clear:ls"
 
 export ANDROID_HOME=$HOME/Library/Android/sdk
@@ -52,7 +63,6 @@ esac
 # pnpm end
 
 alias python=/usr/bin/python3
-
 
 bindkey -s ^f "tmux-sessionizer\n"
 
