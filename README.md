@@ -1,6 +1,6 @@
 # Dotfiles
 
-This repository contains my personal dotfiles and scripts. It is a never-ending WIP and I will never achieve perfection :biblethump:
+This repository contains my personal dotfiles and scripts. It is a never-ending WIP.
 
 ![Setup screenshot](./images/config-screenshot.png)
 
