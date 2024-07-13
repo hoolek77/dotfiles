@@ -45,7 +45,7 @@ vnoremap("K", ":m '<-2<CR>gv=gv") -- move selected lines up
 -- tmux sessionizer
 nnoremap("<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
-nnoremap("<leader>gs", "<cmd>Git<cr>") -- git integration
+nnoremap("<leader>gs", "<cmd>vertical Git<cr>") -- git integration
 
 -- restart lsp server (not on youtube nvideo)
 nnoremap("<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary

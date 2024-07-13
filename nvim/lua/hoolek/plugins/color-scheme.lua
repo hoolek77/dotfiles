@@ -12,8 +12,19 @@ return {
       },
     })
 
-    vim.cmd.colorscheme("tokyonight-storm")
+    -- vim.cmd.colorscheme("tokyonight-storm")
   end,
+  {
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = function()
+      require("gruvbox").setup({
+        transparent_mode = true,
+      })
+
+      vim.cmd.colorscheme("gruvbox")
+    end,
+  },
   -- {
   --   "catppuccin/nvim",
   --   config = function()
@@ -100,17 +111,6 @@ return {
   --     })
   --
   --     vim.cmd.colorscheme("kanagawa")
-  --   end,
-  -- },
-  -- {
-  --   "ellisonleao/gruvbox.nvim",
-  --   priority = 1000,
-  --   config = function()
-  --     require("gruvbox").setup({
-  --       transparent_mode = true,
-  --     })
-  --
-  --     vim.cmd.colorscheme("gruvbox")
   --   end,
   -- },
 }

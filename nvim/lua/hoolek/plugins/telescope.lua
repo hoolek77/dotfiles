@@ -132,10 +132,5 @@ return {
       "<cmd>Telescope git_bcommits<cr>",
       desc = "[g]it [f]ile [c]ommits",
     },
-    {
-      "<leader>gb",
-      "<cmd>Telescope git_branches<cr>",
-      desc = "[g]it [b]ranches",
-    },
   },
 }

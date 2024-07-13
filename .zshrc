@@ -81,5 +81,11 @@ path+=(
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOMEBREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 eval "$(starship init zsh)"
 eval "$(fzf --zsh)"
+
+export PATH=$PATH:/Users/szymonkin/.spicetify

@@ -6,6 +6,7 @@ return {
 
     notify.setup({
       render = "compact",
+      background_colour = "#000000",
     })
 
     local banned_messages = {
