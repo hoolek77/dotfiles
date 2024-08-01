@@ -280,6 +280,7 @@ return {
         diagnostics.mypy,
         diagnostics.ruff,
         formatting.black,
+        formatting.gofmt,
       },
       -- configure format on save
       on_attach = function(current_client, bufnr)

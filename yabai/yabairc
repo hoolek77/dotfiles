@@ -26,7 +26,6 @@ yabai -m config mouse_action2 resize
 # when window is dropped in center of another window, swap them (on edges it will split it)
 yabai -m mouse_drop_action swap
 
-
 # disable specific apps
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
@@ -34,5 +33,7 @@ yabai -m rule --add app="^Simulator$" manage=off
 yabai -m rule --add app="^Safari" manage=off
 yabai -m rule --add app="^Podcasts" manage=off
 yabai -m rule --add app="^Music" manage=off
-yabai -m rule --add app="^Pritunl$" manage=off
+
+osascript -e 'tell application id "tracesOf.Uebersicht" to refresh'
+yabai -m config config external_bar all:40:0
 

@@ -19,6 +19,14 @@ function copy_branch_name() {
   git rev-parse --abbrev-ref HEAD |  tr -d '\n' | pbcopy
 }
 
+function dev_release() {
+  current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+  gco release/dev
+  git pull
+  git merge $current_branch
+}
+
 function ls () {
   if [ -n "$1" ]
   then

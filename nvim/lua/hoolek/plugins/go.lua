@@ -13,5 +13,6 @@ return {
 
     require("go").setup()
   end,
-  "ray-x/guihua.lua", -- recommended if need floating window support
+  event = { "CmdlineEnter" },
+  build = ':lua require("go.install").update_all_sync()',
 }

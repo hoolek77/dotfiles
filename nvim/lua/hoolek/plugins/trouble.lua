@@ -10,8 +10,8 @@ return {
     },
     {
       "<leader>tw",
-      "<cmd>Trouble workspace_diagnostics<cr>",
-      desc = "[t]rouble [w]orkspace",
+      "<cmd>Trouble diagnostics<cr>",
+      desc = "[t]rouble diagnostics",
     },
     {
       "<leader>td",
