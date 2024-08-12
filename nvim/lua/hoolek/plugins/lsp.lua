@@ -84,7 +84,7 @@ return {
       -- keybind options
       local opts = { noremap = true, silent = true, buffer = bufnr }
 
-      -- set keybinds
+      -- set keybindslsp
       keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
       -- keymap.set("n", "gf", "<cmd>Lspsaga finder<CR>", opts) -- show definition, references
       keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- got to declaration

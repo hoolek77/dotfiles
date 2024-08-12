@@ -1,11 +1,12 @@
 return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
+  enabled = true,
   config = function()
     require("lualine").setup({
       options = {
-        theme = "gruvbox-material",
         icons_enabled = true,
+        theme = "catppuccin",
       },
     })
   end,
