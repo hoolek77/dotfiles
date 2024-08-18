@@ -27,7 +27,7 @@ git clone git@github.com:hoolek77/dotfiles.git ~/.dotfiles
 
 3. Create symlinks with Stow.
 
-````zsh
+```zsh
 stow --target $HOME .
 ```
 
@@ -41,4 +41,4 @@ stow --target $HOME .
 
 # Then run the bundle command in the dotfiles directory
 cd ~/.dotfiles && brew bundle
-````
+```
