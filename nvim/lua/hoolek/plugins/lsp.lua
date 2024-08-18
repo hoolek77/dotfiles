@@ -238,9 +238,9 @@ return {
           edit = "<CR>",
         },
       },
-      ui = {
-        kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
-      },
+      -- ui = {
+      --   kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
+      -- },
       native_lsp = {
         enabled = true,
         virtual_text = {
