@@ -1,0 +1,8 @@
+.config/archive
+scripts
+.git
+Brewfile
+Brewfile.lock.json
+README.md
+images
+.DS_Store
