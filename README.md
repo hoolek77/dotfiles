@@ -1,6 +1,6 @@
 # Dotfiles
 
-This repository contains my personal dotfiles and scripts. It is a never-ending WIP.
+This repository contains my personal dotfiles and scripts.
 
 ![Setup screenshot](./images/config-screenshot.png)
 
@@ -9,7 +9,7 @@ This repository contains my personal dotfiles and scripts. It is a never-ending 
 1. Neovim
 2. Tmux with custom sessionizer script
 3. Zsh
-4. Yabai
+4. Aerospace
 
 ## Steps to bootstrap a new Mac
 
@@ -25,17 +25,10 @@ xcode-select --install
 git clone git@github.com:hoolek77/dotfiles.git ~/.dotfiles
 ```
 
-3. Create symlinks in the Home directory to the config files.
+3. Create symlinks with Stow.
 
-```zsh
-ln -s ~/.dotfiles/.zshrc ~/.zshrc
-ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
-ln -s ~/.dotfiles/.nvim ~/.nvim
-ln -s ~/.dotfiles/.skhd ~/.skhd
-ln -s ~/.dotfiles/.yabai ~/.yabai
-ln -s ~/.dotfiles/borders ~/.config/borders
-ln -s ~/.dotfiles/starship.toml ~/.config/starship.toml
+````zsh
+stow --target $HOME .
 ```
 
 4. Install Homebrew, followed by the software listed in the Brewfile.
@@ -48,4 +41,4 @@ ln -s ~/.dotfiles/starship.toml ~/.config/starship.toml
 
 # Then run the bundle command in the dotfiles directory
 cd ~/.dotfiles && brew bundle
-```
+````
