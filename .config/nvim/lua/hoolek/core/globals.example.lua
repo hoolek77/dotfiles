@@ -1,0 +1,5 @@
+return {
+  snyk = {
+    token = "token",
+  },
+}

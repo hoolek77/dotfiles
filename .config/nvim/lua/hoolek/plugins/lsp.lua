@@ -258,6 +258,31 @@ return {
       },
     })
 
+    local configs = require("lspconfig.configs")
+
+    local globals = require("hoolek.core.globals")
+
+    if globals.snyk.token ~= "token" then
+      if not configs.snyk then
+        configs.snyk = {
+          default_config = {
+            cmd = { "snyk-ls", "-f", "/path/to/log/snyk-ls-vim.log" },
+            root_dir = function(name)
+              return lspconfig.util.find_git_ancestor(name) or vim.loop.os_homedir()
+            end,
+            init_options = {
+              activateSnykCode = "true",
+              token = globals.snyk.token,
+            },
+          },
+        }
+      end
+
+      lspconfig.snyk.setup({
+        on_attach = on_attach,
+      })
+    end
+
     -- for conciseness
     local formatting = null_ls.builtins.formatting -- to setup formatters
     local diagnostics = null_ls.builtins.diagnostics -- to setup linters

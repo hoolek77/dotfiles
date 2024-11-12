@@ -39,6 +39,11 @@ return {
         find_files = {
           hidden = true,
         },
+        live_grep = {
+          additional_args = function(opts)
+            return { "--hidden" }
+          end,
+        },
       },
       extensions = {
         file_browser = {
@@ -103,7 +108,9 @@ return {
     {
       "<leader>fs",
       function()
-        require("telescope").extensions.live_grep_args.live_grep_args()
+        require("telescope").extensions.live_grep_args.live_grep_args({
+          additional_args = { "--hidden" },
+        })
       end,
       desc = "[f]ind [s]tring",
     },
