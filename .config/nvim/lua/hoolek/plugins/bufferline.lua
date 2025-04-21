@@ -5,11 +5,6 @@ return {
   enabled = true,
   -- after = "catppuccin",
   config = function()
-    -- local highlights = require("nord").bufferline.highlights({
-    --   italic = true,
-    --   bold = true,
-    -- })
-
     require("bufferline").setup({
       options = {
         separator_style = "minimal",
@@ -19,7 +14,6 @@ return {
           return " " .. icon .. count
         end,
       },
-      -- highlights = highlights,
       -- highlights = require("catppuccin.groups.integrations.bufferline").get(),
     })
   end,

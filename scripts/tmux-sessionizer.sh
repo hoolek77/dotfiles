@@ -1,16 +1,26 @@
 #!/usr/bin/env bash
+source ~/dev/personal/.dotfiles/scripts/tmux-sessionizer-config.sh
 
 if [[ $# -eq 1 ]]; then
-    selected=$1
+  selected=$(awk -v prefix="$root_path_prefix" '{sub(prefix, ""); print $0}' <<< $1)
 else
-    selected=$(find ~/dev ~/dev/frontend/apps ~/dev/frontend/packages ~/dev/personal ~/dev/personal/.dotfiles -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(
+        find "${paths_to_search[@]}" \
+          -mindepth 1 \
+          -maxdepth 1 \
+          -type d \
+          | awk -v prefix="$root_path_prefix" '{sub(prefix, ""); print $0}' \
+          | fzf
+    )
 fi
 
 if [[ -z $selected ]]; then
   exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
+selected="$root_path_prefix$selected"
+
+selected_name=$(echo "$selected" | awk -F'/' '{print $(NF-1)"/"$NF}' | tr '.' '_')
 tmux_running=$(pgrep tmux)
 
 tmux_attached=$(tmux ls | grep attached | awk -F: '{print $1}')

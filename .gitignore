@@ -3,3 +3,5 @@ Brewfile.lock.json
 .gitconfig-signing
 .config/tmux/plugins
 globals.lua
+tmux-sessionizer-config.sh
+

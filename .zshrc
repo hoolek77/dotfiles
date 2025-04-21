@@ -36,6 +36,9 @@ function ls () {
   fi
 }
 
+function nx() {
+    npm exec -- nx "$@"
+}
 
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"

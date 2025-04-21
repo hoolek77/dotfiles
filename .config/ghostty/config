@@ -1,0 +1,20 @@
+theme = Everforest Dark - Hard
+
+# background = #000000
+background-opacity = 0.98
+background-blur-radius = 20
+
+cursor-style = block
+
+font-size = 16
+font-family = "Comic Code Ligatures"
+
+window-decoration = true
+window-padding-x = 10
+window-padding-y = 10
+window-padding-balance = true
+window-step-resize = true
+
+macos-option-as-alt = true
+macos-titlebar-style = hidden
+

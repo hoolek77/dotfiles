@@ -266,10 +266,8 @@ return {
       if not configs.snyk then
         configs.snyk = {
           default_config = {
-            cmd = { "snyk-ls", "-f", "/path/to/log/snyk-ls-vim.log" },
-            root_dir = function(name)
-              return lspconfig.util.find_git_ancestor(name) or vim.loop.os_homedir()
-            end,
+            cmd = { "snyk-ls" },
+            root_dir = lspconfig.util.root_pattern(".git"),
             init_options = {
               activateSnykCode = "true",
               token = globals.snyk.token,
@@ -278,9 +276,9 @@ return {
         }
       end
 
-      lspconfig.snyk.setup({
-        on_attach = on_attach,
-      })
+      -- lspconfig.snyk.setup({
+      --   on_attach = on_attach,
+      -- })
     end
 
     -- for conciseness

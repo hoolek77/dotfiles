@@ -13,6 +13,7 @@ fi
 if [[ $ARCH == "aarch64" ]]; then
   ARCH="arm64"
 fi
-PROTOCOL_VERSION=3
+PROTOCOL_VERSION=16
 VERSION=$(curl https://static.snyk.io/snyk-ls/$PROTOCOL_VERSION/metadata.json | jq .version | sed -e s/\"//g)
+echo $VERSION
 curl "https://static.snyk.io/snyk-ls/$PROTOCOL_VERSION/snyk-ls_${VERSION}_${OS}_${ARCH}" -o /usr/local/bin/snyk-ls

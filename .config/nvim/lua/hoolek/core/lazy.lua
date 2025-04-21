@@ -19,10 +19,11 @@ require("lazy").setup({
   "vim-scripts/ReplaceWithRegister",
 
   "ray-x/go.nvim",
-  "ray-x/guihua.lua", -- recommended if need floating window support
 
   {
     "mg979/vim-visual-multi",
     branch = "master",
   },
+}, {
+  rocks = { enabled = false },
 })

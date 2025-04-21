@@ -46,7 +46,7 @@ local kanagawa = {
 	transparent = 0x00000000,
 
 	bar = {
-		bg = with_alpha(0xff16161D, 0.8),
+		bg = with_alpha(0xff16161D, 0.9),
 		border = 0xffDCD7BA,
 	},
 	popup = {

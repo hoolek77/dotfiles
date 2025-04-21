@@ -67,6 +67,7 @@ return {
             },
           },
         },
+        fzf = {},
         live_grep_args = {
           auto_quoting = true, -- enable/disable auto-quoting
           -- define mappings, e.g.
@@ -94,6 +95,7 @@ return {
         previewer = false,
         initial_mode = "normal",
         layout_config = { height = 40 },
+        telescope,
       })
     end)
 

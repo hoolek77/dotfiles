@@ -5,4 +5,5 @@ Brewfile
 Brewfile.lock.json
 README.md
 images
+.config/.DS_Store
 .DS_Store
