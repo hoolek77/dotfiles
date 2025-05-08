@@ -1,12 +1,12 @@
 return {
-  "nvim-lualine/lualine.nvim",
-  event = "VeryLazy",
-  enabled = true,
-  config = function()
-    require("lualine").setup({
-      options = {
-        icons_enabled = true,
-      },
-    })
-  end,
+  -- "nvim-lualine/lualine.nvim",
+  -- event = "VeryLazy",
+  -- enabled = true,
+  -- config = function()
+  --   require("lualine").setup({
+  --     options = {
+  --       icons_enabled = true,
+  --     },
+  --   })
+  -- end,
 }
