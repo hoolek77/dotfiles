@@ -26,12 +26,12 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = ["move-mouse window-lazy-center", "exec-and-forget sketchybar --trigger aerospace_focus_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREVIOUS_FOCUSED_WORKSPACE=$AEROSPACE_PREV_WORKSPACE"]
 
 [gaps]
-inner.horizontal = 0
-inner.vertical =   2
-outer.left =       2
-outer.bottom =     2
-outer.right =      2
-outer.top = [{ monitor."Built-in Retina Display" = 6 }, 38]
+inner.horizontal = 12
+inner.vertical =   12
+outer.left =       12
+outer.bottom =     12
+outer.right =      12
+outer.top = [{ monitor."Built-in Retina Display" = 6 }, 48] # 36 + 12 = 48
 
 [mode.main.binding]
 
@@ -163,6 +163,16 @@ run = 'layout floating'
 check-further-callbacks = true
 
 [[on-window-detected]]
+if.app-id = 'com.loom.desktop'
+run = 'layout floating'
+check-further-callbacks = true
+
+[[on-window-detected]]
+if.app-id = 'com.adobe.PremierePro.25'
+run = 'layout floating'
+check-further-callbacks = true
+
+[[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
 run = "move-node-to-workspace B"
 
@@ -177,4 +187,21 @@ run = "move-node-to-workspace T"
 [[on-window-detected]]
 if.app-id = 'app.legcord.Legcord'
 run = "move-node-to-workspace D"
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = "move-node-to-workspace C"
+
+[[on-window-detected]]
+if.app-id = 'com.adobe.LightroomClassicCC7'
+run = "move-node-to-workspace R"
+
+[[on-window-detected]]
+if.app-id = 'com.blackmagic-design.DaVinciResolve'
+run = "move-node-to-workspace E"
+
+[[on-window-detected]]
+if.app-id = 'com.adobe.PremierePro.25'
+run = 'layout tiling'
+check-further-callbacks = true
 

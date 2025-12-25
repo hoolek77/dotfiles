@@ -1,13 +1,13 @@
-theme = Everforest Dark - Hard
+theme = Rose Pine Moon
 
 # background = #000000
-background-opacity = 0.98
+background-opacity = 0.7
 background-blur-radius = 20
 
 cursor-style = block
 
 font-size = 16
-font-family = "Comic Code Ligatures"
+font-family = "CaskaydiaMono Nerd Font Mono"
 
 window-decoration = true
 window-padding-x = 10

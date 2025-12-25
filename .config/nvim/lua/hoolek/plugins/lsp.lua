@@ -47,6 +47,7 @@ return {
     -- Configure mason to auto install servers
     require("mason-lspconfig").setup({
       -- list of servers for mason to install
+      automatic_enable = false,
       ensure_installed = {
         -- "tsserver",
         "html",
@@ -88,7 +89,7 @@ return {
       keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
       -- keymap.set("n", "gf", "<cmd>Lspsaga finder<CR>", opts) -- show definition, references
       keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- got to declaration
-      keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
+      keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts) -- see definition and make edits in window
       keymap.set("n", "gi", "<cmd>Trouble lsp_implementations<CR>", opts) -- go to implementation
       keymap.set("n", "gr", "<cmd>Trouble lsp_references<CR>", opts) -- go to implementation
       keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions

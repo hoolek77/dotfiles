@@ -1,4 +1,21 @@
 return {
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    config = function()
+      require("rose-pine").setup({
+        disable_background = true,
+        styles = {
+          italic = false,
+        },
+      })
+
+      vim.cmd.colorscheme("rose-pine-moon")
+
+      vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    end,
+  },
   -- {
   --   "folke/tokyonight.nvim",
   --   lazy = false,
@@ -27,21 +44,21 @@ return {
   --     vim.cmd.colorscheme("gruvbox")
   --   end,
   -- },
-  {
-    "neanias/everforest-nvim",
-    version = false,
-    lazy = false,
-    priority = 1000, -- make sure to load this before all the other start plugins
-    -- Optional; default configuration will be used if setup isn't called.
-    config = function()
-      require("everforest").setup({
-        background = "hard",
-        transparent_background_level = 1,
-      })
-
-      vim.cmd.colorscheme("everforest")
-    end,
-  },
+  -- {
+  --   "neanias/everforest-nvim",
+  --   version = false,
+  --   lazy = false,
+  --   priority = 1000, -- make sure to load this before all the other start plugins
+  --   -- Optional; default configuration will be used if setup isn't called.
+  --   config = function()
+  --     require("everforest").setup({
+  --       background = "hard",
+  --       transparent_background_level = 1,
+  --     })
+  --
+  --     vim.cmd.colorscheme("everforest")
+  --   end,
+  -- },
   -- {
   --   "catppuccin/nvim",
   --   config = function()
@@ -84,7 +101,7 @@ return {
   --
   --     require("kanagawa").setup({
   --       transparent = true,
-  --       theme = "wave",
+  --       theme = "dragon",
   --       cooverrides = function(colors)
   --         local theme = colors.theme
   --
