@@ -100,3 +100,7 @@ eval "$(starship init zsh)"
 eval "$(fzf --zsh)"
 
 export PATH=$PATH:/Users/szymonkin/.spicetify
+
+### MANAGED BY SWAPCARD MDM PKG HARDENING START (DO NOT EDIT)
+[ -s "/usr/local/share/swapcard/pkg-hardening.sh" ] && \. "/usr/local/share/swapcard/pkg-hardening.sh"
+### MANAGED BY SWAPCARD MDM PKG HARDENING END (DO NOT EDIT)

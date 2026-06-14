@@ -1,0 +1,5 @@
+vim.api.nvim_create_user_command("Prettify", function()
+  local file = vim.fn.expand("%:p")
+  vim.cmd("silent !npx prettier --write --ignore-path=/dev/null " .. vim.fn.shellescape(file))
+  vim.cmd("edit!")
+end, { desc = "Format current file with Prettier" })

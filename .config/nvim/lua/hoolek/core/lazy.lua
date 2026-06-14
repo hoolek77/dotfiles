@@ -15,6 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   { import = "hoolek.plugins" },
+  { import = "hoolek.plugins.lsp" },
 
   "vim-scripts/ReplaceWithRegister",
 
