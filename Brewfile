@@ -7,7 +7,6 @@ tap "homebrew/services"
 tap "nikitabobko/tap"
 tap "snyk/tap"
 tap "surrealdb/tap"
-tap "szymonkin/old-formulae"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # C library implementing the SSH2 protocol
